@@ -1,0 +1,6 @@
+# Because OBS isn't very SCL-aware, we need a couple of defines to
+# make it set the build dependencies properly.
+
+%global scl ea-php55
+%global scl_prefix %{scl}-
+
