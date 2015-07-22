@@ -10,6 +10,14 @@
 # This makes the ea-php<ver>-build macro stuff work
 %scl_package_override
 
+# OBS builds the 32-bit targets as arch 'i586', but 32-bit archive is
+# named 'i386'.  Other archives are named as the actual architecture.
+%if "%{_arch}" == "i586"
+%global archive_arch i386
+%else
+%global archive_arch %{_arch}
+%endif
+
 Name:    %{?scl_prefix}php-sourceguardian
 Vendor:  SourceGuardian Ltd.
 Summary: Loader for SourceGuardian-encoded PHP files
@@ -19,10 +27,10 @@ License: Redistributable
 Group:   Development/Languages
 URL:     http://www.sourceguardian.com/loaders.php
 
-# We'll only do 64-bit packages, so no need for 32-bit libraries.  The
+# There is a different distribution archive per architecture.  The
 # archive contains the license file, so no need to have it as a
 # separate source file.
-Source: https://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.gz
+Source: https://www.sourceguardian.com/loaders/download/loaders.linux-%{archive_arch}.tar.gz
 
 BuildRequires: scl-utils-build
 BuildRequires: %{?scl_prefix}scldevel
