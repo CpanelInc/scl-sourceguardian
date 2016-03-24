@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 %global extension_type php
-%global upstream_name ioncube
+%global upstream_name sourceguardian
 
 %{?scl:%global _scl_prefix /opt/cpanel}
 %{?scl:%scl_package %{extension_type}-%{upstream_name}}
@@ -26,7 +26,7 @@ Name:    %{?scl_prefix}%{extension_type}-%{upstream_name}
 Vendor:  SourceGuardian Ltd.
 Summary: Loader for SourceGuardian-encoded PHP files
 Version: 10.1.5
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: Redistributable
 Group:   Development/Languages
 URL:     http://www.sourceguardian.com/loaders.php
@@ -82,6 +82,9 @@ EOF
 %{php_extdir}/ixed.%{php_version}.lin
 
 %changelog
+* Thu Mar 24 2016 Jacob Perkins <jacob.perkins@cpanel.net> 10.1.5-3
+- Fixed upstream_name
+
 * Wed Mar 09 2016 S. Kurt Newman <kurt.newman@cpanel.net> - 10.1.5-2
 - Resolve internal SCL builds optimizations with Makefiles (EA-4269)
 
