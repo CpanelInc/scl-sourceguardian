@@ -1,14 +1,18 @@
 %define debug_package %{nil}
 
-# Package namespaces
-%global ns_name ea
-%global ns_dir /opt/cpanel
-%global _scl_prefix %ns_dir
+%global extension_type php
+%global upstream_name sourceguardian
 
-%scl_package %scl
+%{?scl:%global _scl_prefix /opt/cpanel}
+%{?scl:%scl_package %{extension_type}-%{upstream_name}}
+%{?scl:BuildRequires: scl-utils-build}
+%{?scl:Requires: %scl_runtime}
+%{!?scl:%global pkg_name %{name}}
+%{?scl:%scl_package_override}
 
-# This makes the ea-php<ver>-build macro stuff work
-%scl_package_override
+# must redefine this in the spec file because OBS doesn't know how
+# to handle macros in BuildRequires statements
+%{?scl:%global scl_prefix %{scl}-}
 
 # OBS builds the 32-bit targets as arch 'i586', but 32-bit archive is
 # named 'i386'.  Other archives are named as the actual architecture.
@@ -18,23 +22,23 @@
 %global archive_arch %{_arch}
 %endif
 
-Name:    %{?scl_prefix}php-sourceguardian
+Name:    %{?scl_prefix}%{extension_type}-%{upstream_name}
 Vendor:  SourceGuardian Ltd.
 Summary: Loader for SourceGuardian-encoded PHP files
 Version: 10.1.5
-Release: 1%{?dist}
+Release: 3%{?dist}
 License: Redistributable
 Group:   Development/Languages
 URL:     http://www.sourceguardian.com/loaders.php
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # There is a different distribution archive per architecture.  The
 # archive contains the license file, so no need to have it as a
 # separate source file.
 Source: https://www.sourceguardian.com/loaders/download/loaders.linux-%{archive_arch}.tar.gz
 
-BuildRequires: scl-utils-build
-BuildRequires: %{?scl_prefix}scldevel
-BuildRequires: %{?scl_prefix}build
+%{?scl:BuildRequires: %{?scl_prefix}scldevel}
+%{?scl:BuildRequires: %{?scl_prefix}build}
 BuildRequires: %{?scl_prefix}php-devel
 Requires:      %{?scl_prefix}php(api) = %{php_core_api}
 
@@ -55,6 +59,7 @@ mv 'SourceGuardian Loader License.pdf' SourceGuardian_Loader_License.pdf
 
 %install
 [ "$RPM_BUILD_ROOT" != "/" ] && rm -rf %{buildroot}
+
 
 # The module itself
 install -d -m 755 $RPM_BUILD_ROOT%{php_extdir}
@@ -77,5 +82,11 @@ EOF
 %{php_extdir}/ixed.%{php_version}.lin
 
 %changelog
+* Thu Mar 24 2016 Jacob Perkins <jacob.perkins@cpanel.net> 10.1.5-3
+- Fixed upstream_name
+
+* Wed Mar 09 2016 S. Kurt Newman <kurt.newman@cpanel.net> - 10.1.5-2
+- Resolve internal SCL builds optimizations with Makefiles (EA-4269)
+
 * Fri Jul 17 2015 Trinity Quirk <trinity.quirk@cpanel.net> - 10.1.5-1
 - Initial creation
