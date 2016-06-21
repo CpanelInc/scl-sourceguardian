@@ -26,7 +26,9 @@ Name:    %{?scl_prefix}%{extension_type}-%{upstream_name}
 Vendor:  SourceGuardian Ltd.
 Summary: Loader for SourceGuardian-encoded PHP files
 Version: 10.1.5
-Release: 3%{?dist}
+# Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4592 for more details
+%define release_prefix 5
+Release: %{release_prefix}%{?dist}.cpanel
 License: Redistributable
 Group:   Development/Languages
 URL:     http://www.sourceguardian.com/loaders.php
@@ -82,6 +84,9 @@ EOF
 %{php_extdir}/ixed.%{php_version}.lin
 
 %changelog
+* Mon Jun 20 2016 Dan Muey <dan@cpanel.net> - 10.1.5-5
+- EA-4383: Update Release value to OBS-proof versioning
+
 * Thu Mar 24 2016 Jacob Perkins <jacob.perkins@cpanel.net> 10.1.5-3
 - Fixed upstream_name
 
