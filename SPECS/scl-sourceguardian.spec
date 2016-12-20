@@ -23,11 +23,11 @@
 %endif
 
 Name:    %{?scl_prefix}%{extension_type}-%{upstream_name}
-Vendor:  SourceGuardian Ltd.
+Vendor:  cPanel, Inc.
 Summary: Loader for SourceGuardian-encoded PHP files
 Version: 11.0.6
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4592 for more details
-%define release_prefix 1
+%define release_prefix 2
 Release: %{release_prefix}%{?dist}.cpanel
 License: Redistributable
 Group:   Development/Languages
@@ -84,6 +84,9 @@ EOF
 %{php_extdir}/ixed.%{php_version}.lin
 
 %changelog
+* Fri Dec 16 2016 Cory McIntire <cory@cpanel.net> - 11.0.6-2
+- Updated Vendor field in SPEC file
+
 * Fri Nov 18 2016 Edwin Buck <e.buck@cpanel.net> - 11.0.6-1
 - EA-4383: Update Release value to OBS-proof versioning
 
