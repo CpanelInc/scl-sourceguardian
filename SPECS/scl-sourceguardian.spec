@@ -25,9 +25,9 @@
 Name:    %{?scl_prefix}%{extension_type}-%{upstream_name}
 Vendor:  cPanel, Inc.
 Summary: Loader for SourceGuardian-encoded PHP files
-Version: 11.0.6
+Version: 11.2
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4592 for more details
-%define release_prefix 2
+%define release_prefix 1
 Release: %{release_prefix}%{?dist}.cpanel
 License: Redistributable
 Group:   Development/Languages
@@ -84,6 +84,9 @@ EOF
 %{php_extdir}/ixed.%{php_version}.lin
 
 %changelog
+* Mon May 21 2018 Daniel Muey <dan@cpanel.net> - 11.2-1
+- EA-7324: Update to v11.2, drop v11.0.6 (Add 7.1 and 7.2 support)
+
 * Fri Dec 16 2016 Cory McIntire <cory@cpanel.net> - 11.0.6-2
 - Updated Vendor field in SPEC file
 
