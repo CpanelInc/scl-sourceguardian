@@ -16,22 +16,18 @@
 
 # OBS builds the 32-bit targets as arch 'i586', but 32-bit archive is
 # named 'i386'.  Other archives are named as the actual architecture.
-%if "%{_arch}" == "i586"
-%global archive_arch i386
-%else
 %global archive_arch %{_arch}
-%endif
 
 Name:    %{?scl_prefix}%{extension_type}-%{upstream_name}
 Vendor:  cPanel, Inc.
 Summary: Loader for SourceGuardian-encoded PHP files
-Version: 11.2
+Version: 11.3.1
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4592 for more details
 %define release_prefix 1
 Release: %{release_prefix}%{?dist}.cpanel
 License: Redistributable
 Group:   Development/Languages
-URL:     http://www.sourceguardian.com/loaders.php
+URL:     http://www.sourceguardian.com/loaders.html
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # There is a different distribution archive per architecture.  The
@@ -84,6 +80,11 @@ EOF
 %{php_extdir}/ixed.%{php_version}.lin
 
 %changelog
+* Fri May 17 2019 Cory McIntire <cory@cpanel.net> - 11.3.1-1
+- EA-8465: Update to v11.3, drop v11.2
+  Add PHP 7.3 support
+  Remove 32 bit loader
+
 * Mon May 21 2018 Daniel Muey <dan@cpanel.net> - 11.2-1
 - EA-7324: Update to v11.2, drop v11.0.6 (Add 7.1 and 7.2 support)
 
