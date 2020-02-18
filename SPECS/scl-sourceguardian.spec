@@ -23,7 +23,7 @@ Vendor:  cPanel, Inc.
 Summary: Loader for SourceGuardian-encoded PHP files
 Version: 11.3.4
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4592 for more details
-%define release_prefix 1
+%define release_prefix 2
 Release: %{release_prefix}%{?dist}.cpanel
 License: Redistributable
 Group:   Development/Languages
@@ -39,6 +39,7 @@ Source: https://www.sourceguardian.com/loaders/download/loaders.linux-%{archive_
 %{?scl:BuildRequires: %{?scl_prefix}build}
 BuildRequires: %{?scl_prefix}php-devel
 Requires:      %{?scl_prefix}php(api) = %{php_core_api}
+Requires:      %{?scl_prefix}php-cli
 
 # Don't provide extensions as shared library resources
 %{?filter_provides_in: %filter_provides_in %{php_extdir}/.*\.lin$}
@@ -80,6 +81,9 @@ EOF
 %{php_extdir}/ixed.%{php_version}.lin
 
 %changelog
+* Tue Feb 18 2020 Tim Mullin <tim@cpanel.net> - 11.3.4-2
+- EA-8865: Add php-cli as a dependency
+
 * Mon Dec 16 2019 Tim Mullin <tim@cpanel.net) - 11.3.4-1
 - EA-8785: Update to v11.3.4
 
