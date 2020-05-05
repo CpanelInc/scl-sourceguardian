@@ -1,0 +1,64 @@
+#!/usr/local/cpanel/3rdparty/bin/perl
+# cpanel - find-latest-version                  Copyright(c) 2019 cPanel, L.L.C.
+#                                                           All rights Reserved.
+# copyright@cpanel.net                                         http://cpanel.net
+# This code is subject to the cPanel license. Unauthorized copying is prohibited
+
+package ea_sourceguardian::find_latest_version;
+
+use strict;
+use warnings;
+
+use Cpanel::JSON             ();
+use HTML::TreeBuilder::XPath ();
+
+use FindBin;
+use lib "$FindBin::Bin/../ea-tools/lib/ea4_tool";    # assumes ea-tools is checked out next to this repo
+use ea4_tool::util ();
+
+ea4_tool::util::find_latest_version( \&_get_required, \&_add_sum ) if !caller();
+
+###############
+#### helpers ##
+###############
+
+sub _get_required {
+    my ($http) = @_;
+
+    my $res = $http->get("https://www.sourceguardian.com/loaders.html");
+    if ( !$res->{success} ) {
+        die "Could not GET sourceguardian info ($res->{status} $res->{reason})\n";
+    }
+
+    my $version = _get_version_from_html( $res->{content} );
+    my $name    = "loaders.linux-x86_64.tar.bz2";
+    my $url     = "https://www.sourceguardian.com/loaders/download/loaders.linux-x86_64.tar.bz2";
+
+    return ( $version, $url, $name );
+}
+
+sub _add_sum {
+    my ( $http, $hr ) = @_;
+
+    # they don't provide this information
+
+    return;
+}
+
+sub _get_version_from_html {
+    my ($html) = @_;
+
+    my $dom = HTML::TreeBuilder::XPath->new_from_content($html);
+
+  ROW:
+    for my $row ( $dom->findnodes('//div[@class="tabrow"]') ) {
+        my @cells = $row->findnodes_as_strings("span");
+        next ROW if !@cells || $cells[0] ne "Linux 64-bit";
+
+        return $cells[4];
+    }
+
+    die "Could not find latest version from HTML\n";
+
+    return;
+}
