@@ -21,7 +21,7 @@
 Name:    %{?scl_prefix}%{extension_type}-%{upstream_name}
 Vendor:  cPanel, Inc.
 Summary: Loader for SourceGuardian-encoded PHP files
-Version: 11.4.1
+Version: 12.0.0
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4592 for more details
 %define release_prefix 1
 Release: %{release_prefix}%{?dist}.cpanel
@@ -81,6 +81,9 @@ EOF
 %{php_extdir}/ixed.%{php_version}.lin
 
 %changelog
+* Mon Mar 01 2021 Cory McIntire <cory@cpanel.net> - 12.0.0-1
+- EA-9610: Update scl-sourceguardian from v11.4.1 to v12.0.0
+
 * Thu Apr 30 2020 Daniel Muey <dan@cpanel.net> - 11.4.1-1
 - EA-9048: Update scl-sourceguardian from v11.3.4 to v11.4.1
 
