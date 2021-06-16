@@ -21,9 +21,9 @@
 Name:    %{?scl_prefix}%{extension_type}-%{upstream_name}
 Vendor:  cPanel, Inc.
 Summary: Loader for SourceGuardian-encoded PHP files
-Version: 12.0.0
+Version: 12.1
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4592 for more details
-%define release_prefix 2
+%define release_prefix 1
 Release: %{release_prefix}%{?dist}.cpanel
 License: Redistributable
 Group:   Development/Languages
@@ -81,6 +81,9 @@ EOF
 %{php_extdir}/ixed.%{php_version}.lin
 
 %changelog
+* Mon Jun 14 2021 Cory McIntire <cory@cpanel.net> - 12.1-1
+- EA-9862: Update scl-sourceguardian from v12.0.0 to v12.1
+
 * Fri Mar 12 2021 Cory McIntire <cory@cpanel.net> - 12.0.0-2
 - EA-9650: Update SourceGuardian to include PHP 8.0
 
