@@ -1,0 +1,36 @@
+{
+    "vars": {
+        "_arch": "x86_64",
+        "php_core_api": "",
+        "inifile": "01-ioncube.ini",
+        "php_inidir": "/opt/cpanel/%{scl}/root/etc/php.d",
+        "php_extdir": "/opt/cpanel/%{scl}/root/usr/lib64/php/modules/"
+    },
+    "remove_from_requires": [
+        "ea-php80-build",
+        "ea-php74-build",
+        "ea-php73-build",
+        "ea-php80-scldevel",
+        "ea-php74-scldevel",
+        "ea-php73-scldevel",
+        "scl-utils-build",
+        "ea-php80-php(api)",
+        "ea-php74-php(api)",
+        "ea-php73-php(api)",
+        "ea-php80-php(zend-abi)",
+        "ea-php74-php(zend-abi)",
+        "ea-php73-php(zend-abi)",
+        "%scl_runtime"
+    ],
+    "add_to_requires": {
+        "ea-php80-php-sourceguardian": [
+            "ea-php80-php"
+        ],
+        "ea-php74-php-sourceguardian": [
+            "ea-php74-php"
+        ],
+        "ea-php73-php-sourceguardian": [
+            "ea-php73-php"
+        ]
+    }
+}
