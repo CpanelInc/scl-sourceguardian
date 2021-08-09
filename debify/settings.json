@@ -20,17 +20,9 @@
         "ea-php80-php(zend-abi)",
         "ea-php74-php(zend-abi)",
         "ea-php73-php(zend-abi)",
+        "ea-php80-php",
+        "ea-php74-php",
+        "ea-php73-php",
         "%scl_runtime"
-    ],
-    "add_to_requires": {
-        "ea-php80-php-sourceguardian": [
-            "ea-php80-php"
-        ],
-        "ea-php74-php-sourceguardian": [
-            "ea-php74-php"
-        ],
-        "ea-php73-php-sourceguardian": [
-            "ea-php73-php"
-        ]
-    }
+    ]
 }
