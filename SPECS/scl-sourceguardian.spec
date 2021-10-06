@@ -84,7 +84,7 @@ EOF
 * Mon Oct 04 2021 Cory McIntire <cory@cpanel.net> - 12.1.2-1
 - EA-10163: Update scl-sourceguardian from v12.1 to v12.1.2
 
-* Mon Jun 14 2021 Cory McIntire <cory@cpanel.net> - 12.1-1
+* Mon Jun 14 2021 Cory McIntire <cory@cpanel.net> - 12.1.0-1
 - EA-9862: Update scl-sourceguardian from v12.0.0 to v12.1
 
 * Fri Mar 12 2021 Cory McIntire <cory@cpanel.net> - 12.0.0-2
