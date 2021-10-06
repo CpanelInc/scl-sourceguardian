@@ -23,6 +23,6 @@
         "ea-php80-php",
         "ea-php74-php",
         "ea-php73-php",
-        "%scl-runtime"
+        "%scl_runtime"
     ]
 }
