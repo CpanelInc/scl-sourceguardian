@@ -4,7 +4,8 @@
         "php_core_api": "",
         "inifile": "01-ioncube.ini",
         "php_inidir": "/opt/cpanel/%{scl}/root/etc/php.d",
-        "php_extdir": "/opt/cpanel/%{scl}/root/usr/lib64/php/modules/"
+        "php_extdir": "/opt/cpanel/%{scl}/root/usr/lib64/php/modules/",
+        "php_version": "will be reset to the correct value by override_dh_auto_install.sh"
     },
     "remove_from_requires": [
         "ea-php80-build",
