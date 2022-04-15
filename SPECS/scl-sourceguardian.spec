@@ -21,9 +21,9 @@
 Name:    %{?scl_prefix}%{extension_type}-%{upstream_name}
 Vendor:  cPanel, Inc.
 Summary: Loader for SourceGuardian-encoded PHP files
-Version: 12.1.2
+Version: 13.0.3
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4592 for more details
-%define release_prefix 2
+%define release_prefix 1
 Release: %{release_prefix}%{?dist}.cpanel
 License: Redistributable
 Group:   Development/Languages
@@ -81,6 +81,9 @@ EOF
 %{php_extdir}/ixed.%{php_version}.lin
 
 %changelog
+* Fri Apr 15 2022 Cory McIntire <cory@cpanel.net> - 13.0.3-1
+- EA-10641: Update scl-sourceguardian from v12.1.2 to v13.0.3
+
 * Tue Dec 28 2021 Dan Muey <dan@cpanel.net> - 12.1.2-2
 - ZC-9589: Update DISABLE_BUILD to match OBS
 
