@@ -51,9 +51,9 @@ sub _get_version_from_html {
     my $dom = HTML::TreeBuilder::XPath->new_from_content($html);
 
   ROW:
-    for my $row ( $dom->findnodes('//div[@class="tabrow"]') ) {
+    for my $row ( $dom->findnodes('//div[@class="tabrow"]'), $dom->findnodes('//div[@class="tabrow grey"]') ) {
         my @cells = $row->findnodes_as_strings("span");
-        next ROW if !@cells || $cells[0] ne "Linux 64-bit";
+        next ROW if !@cells || $cells[0] ne "Linux x86_64";
 
         return $cells[4];
     }
