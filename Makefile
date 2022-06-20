@@ -1,4 +1,5 @@
 OBS_PROJECT := EA4
+sourceguardian81-obs : DISABLE_BUILD += repository=CentOS_6.5_standard
 sourceguardian80-obs : DISABLE_BUILD += repository=CentOS_6.5_standard
 sourceguardian72-obs : DISABLE_BUILD += repository=xUbuntu_20.04
 sourceguardian71-obs : DISABLE_BUILD += repository=CentOS_8 repository=xUbuntu_20.04
