@@ -1,5 +1,3 @@
-%define debug_package %{nil}
-
 %global extension_type php
 %global upstream_name sourceguardian
 
