@@ -1,5 +1,3 @@
-%define debug_package %{nil}
-
 %global extension_type php
 %global upstream_name sourceguardian
 
@@ -21,7 +19,7 @@
 Name:    %{?scl_prefix}%{extension_type}-%{upstream_name}
 Vendor:  cPanel, Inc.
 Summary: Loader for SourceGuardian-encoded PHP files
-Version: 14.0.2
+Version: 14.0.3
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4592 for more details
 %define release_prefix 1
 Release: %{release_prefix}%{?dist}.cpanel
@@ -81,6 +79,12 @@ EOF
 %{php_extdir}/ixed.%{php_version}.lin
 
 %changelog
+* Mon May 22 2023 Cory McIntire <cory@cpanel.net> - 14.0.3-1
+- EA-11429: Update scl-sourceguardian from v14.0.2 to v14.0.3
+
+* Tue Apr 04 2023 Julian Brown <julian.brown@cpanel.net> - 14.0.2-2
+- ZC-10047: Do not build on Ubuntu 22
+
 * Sun Mar 26 2023 Cory McIntire <cory@cpanel.net> - 14.0.2-1
 - EA-11314: Update scl-sourceguardian from v14.0.1 to v14.0.2
 
