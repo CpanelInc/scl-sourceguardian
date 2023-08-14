@@ -9,7 +9,6 @@ package ea_sourceguardian::find_latest_version;
 use strict;
 use warnings;
 
-use Cpanel::JSON             ();
 use HTML::TreeBuilder::XPath ();
 
 use FindBin;
