@@ -1,5 +1,7 @@
 %global extension_type php
 %global upstream_name sourceguardian
+%define debug_package %{nil}
+%define _enable_debug_packages %{nil}
 
 %{?scl:%global _scl_prefix /opt/cpanel}
 %{?scl:%scl_package %{extension_type}-%{upstream_name}}
@@ -77,7 +79,6 @@ EOF
 %doc README SourceGuardian_Loader_License.pdf
 %config(noreplace) %{php_inidir}/sourceguardian.ini
 %{php_extdir}/ixed.%{php_version}.lin
-/usr/lib/debug/
 
 %changelog
 * Thu Aug 01 2024 Cory McIntire <cory@cpanel.net> - 15.0.2-1
