@@ -21,9 +21,9 @@ EOF
 
 cat -n $file
 
-mkdir -p $DEB_INSTALL_ROOT/opt/cpanel/$scl/root/usr/share/doc/$full_package_name
-cp README $DEB_INSTALL_ROOT/opt/cpanel/$scl/root/usr/share/doc/$full_package_name
-cp SourceGuardian_Loader_License.pdf $DEB_INSTALL_ROOT/opt/cpanel/$scl/root/usr/share/doc/$full_package_name
+mkdir -p $DEB_INSTALL_ROOT/opt/cpanel/$scl/root/usr/share/doc/$name
+cp README $DEB_INSTALL_ROOT/opt/cpanel/$scl/root/usr/share/doc/$name
+cp SourceGuardian_Loader_License.pdf $DEB_INSTALL_ROOT/opt/cpanel/$scl/root/usr/share/doc/$name
 
 echo "FILELIST"
 
